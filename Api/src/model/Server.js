@@ -2,7 +2,8 @@ const express = require('express'),
     config = require('../config'),
     cors = require("cors"),
     morgan = require('morgan'),
-    servicesRouter = require('../routes/services.route')
+    servicesRouter = require('../routes/services.route'),
+    userRouter = require('../routes/user.routes')
 
 class Server {
 
@@ -25,6 +26,7 @@ class Server {
 
     routes() {
         this.app.use('/api/services', servicesRouter)
+        this.app.use('/api/user', userRouter)
     }
 
     listen() {
