@@ -3,7 +3,7 @@ const { Router } = require('express'),
 
 const router = Router()
 
-router.get('/getAll', userController.getAll)
-router.get('/getAll/:id', userController.getUser)
+router.get('/', userController.getAll)
+router.get('/:id', userController.getUser)
 
 module.exports = router
