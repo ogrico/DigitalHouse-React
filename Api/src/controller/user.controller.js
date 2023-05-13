@@ -12,7 +12,7 @@ const userController = {
             if (!Number.isNaN(pageNumber) && pageNumber > 0) page = pageNumber
 
             const users = await User.findAndCountAll({
-                attributes: ['id', 'firstname', 'lastname', 'avatar', 'state', 'email','imgPublic'],
+                attributes: ['id', 'firstname', 'lastname', 'avatar', 'state', 'email', 'imgPublic'],
                 limit: size,
                 offset: page * size
             })
@@ -29,8 +29,33 @@ const userController = {
 
         } catch (error) {
             console.log(error)
-            res.status(500).json({ error })
+            let er = []
+            er.push(''+error+'')
+            res.status(500).json( {error: er} )
         }
+
+    },
+    getUser: async (req, res) => {
+        try {
+
+            const user = await User.findAll({
+                attributes: ['id', 'firstname', 'lastname', 'avatar', 'state', 'email', 'imgPublic'],
+                where: { id: req.params.id }
+            })
+
+            res.status(200).json(
+                {
+                    user
+                }
+            )
+
+        } catch (error) {
+            console.log(error)
+            let er = []
+            er.push(''+error+'')
+            res.status(500).json( {error: er} )
+        }
+
     }
 }
 
