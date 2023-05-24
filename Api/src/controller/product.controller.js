@@ -31,7 +31,7 @@ const productController = {
                 limit: size,
                 offset: page * size
             }), byCategory = countByCategory(response)
-
+            console.log(response);
             response.forEach(element => {
                 products.push({
                     ...element.dataValues,
@@ -53,7 +53,6 @@ const productController = {
         } catch (error) {
 
             console.log(error)
-            let er = []
             er.push('' + error + '')
             res.status(500).json({ error: er })
 
@@ -73,6 +72,27 @@ const productController = {
             res.status(200).json(
                 {
                     product
+                }
+            )
+
+        } catch (error) {
+            console.log(error)
+            let er = []
+            er.push('' + error + '')
+            res.status(500).json({ error: er })
+        }
+    },
+    gerCategory: async (req, res) => {
+
+        try {
+            const categorys = await Category.findAll(
+                {
+                    include:[Product]
+                }
+            )
+            res.status(200).json(
+                {
+                    categorys
                 }
             )
 
