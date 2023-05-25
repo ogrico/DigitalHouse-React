@@ -21,7 +21,7 @@ const productController = {
 
             const pageNumber = Number.parseInt(req.query.page)
             let page = 0,
-                size = 10,
+                size = 50,
                 products = []
             if (!Number.isNaN(pageNumber) && pageNumber > 0) page = pageNumber
 
@@ -31,18 +31,18 @@ const productController = {
                 limit: size,
                 offset: page * size
             }), byCategory = countByCategory(response)
-
+            console.log(response);
             response.forEach(element => {
                 products.push({
                     ...element.dataValues,
-                    detail: 'http://localhost:8086/api/products/' + element.id
+                    detail: 'http://localhost:8086/api/products/product/' + element.id
                 })
             })
 
             res.status(200).json(
                 {
-                    records: response.length + 1,
-                    totalPage: Math.ceil(response.length / size) + 1,
+                    records: response.length,
+                    totalPage: Math.ceil(response.length / size),
                     recordsPerPage: size,
                     countByCategory: byCategory,
                     page: page,
@@ -53,13 +53,10 @@ const productController = {
         } catch (error) {
 
             console.log(error)
-            let er = []
             er.push('' + error + '')
             res.status(500).json({ error: er })
 
         }
-
-
 
     },
     getProduct: async (req, res) => {
@@ -73,6 +70,27 @@ const productController = {
             res.status(200).json(
                 {
                     product
+                }
+            )
+
+        } catch (error) {
+            console.log(error)
+            let er = []
+            er.push('' + error + '')
+            res.status(500).json({ error: er })
+        }
+    },
+    gerCategory: async (req, res) => {
+
+        try {
+            const categorys = await Category.findAll(
+                {
+                    include:[Product]
+                }
+            )
+            res.status(200).json(
+                {
+                    categorys
                 }
             )
 

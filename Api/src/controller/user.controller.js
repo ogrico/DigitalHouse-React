@@ -1,7 +1,12 @@
 const { User } = require('../database/asocciations')
 
 const userController = {
-
+    /**
+     * 
+     * @param {string} req 
+     * @param {JSON} res 
+     * @return {JSON}
+     */
     getAll: async (req, res) => {
         try {
 

@@ -2,7 +2,7 @@ const express = require('express'),
     config = require('../config'),
     cors = require("cors"),
     morgan = require('morgan'),
-    servicesRouter = require('../routes/services.route'),
+    servicesRouter = require('../routes/services.routes'),
     userRouter = require('../routes/user.routes'),
     productRouter = require('../routes/product.routes')
 
