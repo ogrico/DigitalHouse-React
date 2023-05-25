@@ -35,7 +35,7 @@ const productController = {
             response.forEach(element => {
                 products.push({
                     ...element.dataValues,
-                    detail: 'http://localhost:8086/api/products/' + element.id
+                    detail: 'http://localhost:8086/api/products/product/' + element.id
                 })
             })
 

@@ -1,6 +1,18 @@
 import React from 'react'
 import axios from 'axios'
 import Detail from '../detail/detail'
+import {
+    Card,
+    Table,
+    TableHead,
+    TableRow,
+    TableHeaderCell,
+    TableBody,
+    TableCell,
+    Text,
+    Title,
+    Badge,
+} from "@tremor/react";
 
 
 const apiCategorys = async () => {
@@ -12,34 +24,37 @@ const categorys = await apiCategorys()
 function Categories() {
 
     return (
-        <div className='continer p-2 d-flex-colum'>
-            <article className='d-flex justify-content-center'>
-                <h2>Categorys</h2>
-            </article>
-            <article>
-                <table className="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Categorys</th>
-                            <th scope="col">Element</th>
-                            <th scope="col">Details</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+        <div className='p-5 continer'>
+            <Card>
+                <Title className='text-center'>Categorias</Title>
+                <Table className="mt-5">
+                    <TableHead>
+                        <TableRow>
+
+                            <TableHeaderCell>#</TableHeaderCell>
+                            <TableHeaderCell>Nombre</TableHeaderCell>
+                            <TableHeaderCell>Elementos</TableHeaderCell>
+                            <TableHeaderCell>Descripción</TableHeaderCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
                         {categorys.map((category, id) => (
-                            <tr key={id}>
-                                <th scope="row"> <a href="#"> {id + 1}</a> </th>
-                                <td>{category.name}</td>
-                                <td>{category.products.length}</td>
-                                <td>{category.description}</td>
-                            </tr>
+                            <TableRow key={category.id}>
+                                <TableCell>{id + 1}</TableCell>
+                                <TableCell>{category.name}</TableCell>
+                                <TableCell>
+                                    <Text>{category.products.length}</Text>
+                                </TableCell>
+                                <TableCell>
+                                    <Text>{category.description}</Text>
+                                </TableCell>
+                            </TableRow>
                         ))}
-                    </tbody>
-                </table>
-            </article>
-            
-            <Detail/>
+                    </TableBody>
+                </Table>
+            </Card>
+
+            <Detail />
 
         </div>
     )
