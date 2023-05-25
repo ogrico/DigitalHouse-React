@@ -6,7 +6,6 @@ import Categories from './components/categories/categories'
 import { Card, Metric, Text, Title, TabList, Tab } from "@tremor/react"
 
 const component = (selectedView) => {
-  console.log(selectedView);
   switch (selectedView) {
     case 1: return <DashBase />
     case 2: return <Products />
@@ -17,7 +16,7 @@ const component = (selectedView) => {
 }
 
 function App() {
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState(1);
 
   
   return (

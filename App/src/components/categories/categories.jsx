@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Detail from '../detail/detail'
 
 
 const apiCategorys = async () => {
@@ -37,6 +38,9 @@ function Categories() {
                     </tbody>
                 </table>
             </article>
+            
+            <Detail/>
+
         </div>
     )
 

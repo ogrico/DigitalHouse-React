@@ -41,7 +41,6 @@ function DashBase() {
         <div>
             <Grid numCols={1} numColsSm={2} numColsLg={3} className="gap-2 pt-10">
 
-
                 <Card decoration="top" decorationColor="blue">
                     <Text>Usuarios</Text>
                     <Metric>Total: {users.records}</Metric>
