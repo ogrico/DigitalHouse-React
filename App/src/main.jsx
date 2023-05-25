@@ -6,6 +6,6 @@ import Categories from './components/categories/categories.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Categories/>
+    <App/>
   </React.StrictMode>,
 )

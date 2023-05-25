@@ -21,7 +21,7 @@ const productController = {
 
             const pageNumber = Number.parseInt(req.query.page)
             let page = 0,
-                size = 10,
+                size = 50,
                 products = []
             if (!Number.isNaN(pageNumber) && pageNumber > 0) page = pageNumber
 
@@ -42,7 +42,7 @@ const productController = {
             res.status(200).json(
                 {
                     records: response.length + 1,
-                    totalPage: Math.ceil(response.length / size) + 1,
+                    totalPage: Math.ceil(response.length / size),
                     recordsPerPage: size,
                     countByCategory: byCategory,
                     page: page,
@@ -57,8 +57,6 @@ const productController = {
             res.status(500).json({ error: er })
 
         }
-
-
 
     },
     getProduct: async (req, res) => {
