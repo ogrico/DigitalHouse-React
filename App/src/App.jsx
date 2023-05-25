@@ -20,6 +20,7 @@ function App() {
 
 
   return (
+    
     <div className='bg-slate-200 p-6 sm:p-10'>
       <Title>IBikes</Title>
       <TabList value={value} onValueChange={setValue} marginTop="mt-6">
@@ -27,7 +28,11 @@ function App() {
         <Tab value={2} text="Productos" />
         <Tab value={3} text="Detalles" />
       </TabList>
+
       {component(value)}
+
+      
+
     </div>
   )
 }
