@@ -41,7 +41,7 @@ const productController = {
 
             res.status(200).json(
                 {
-                    records: response.length + 1,
+                    records: response.length,
                     totalPage: Math.ceil(response.length / size),
                     recordsPerPage: size,
                     countByCategory: byCategory,

@@ -3,15 +3,15 @@ import axios from 'axios'
 import { Grid, Card, Text, Metric, BarList, Bold, Title, Flex } from "@tremor/react";
 
 const apiProducts = async () => {
-    const products = await axios.get("http://localhost:3010/api/products")
+    const products = await axios.get("http://localhost:8086/api/products")
     return products.data
 }
 const apiUsers = async () => {
-    const users = await axios.get("http://localhost:3010/api/users")
+    const users = await axios.get("http://localhost:8086/api/users")
     return users.data
 }
 const apiCategorys = async () => {
-    const categorys = await axios.get("http://localhost:3010/api/products/categorys")
+    const categorys = await axios.get("http://localhost:8086/api/products/categorys")
     return categorys.data.categorys
 }
 const products = await apiProducts()
